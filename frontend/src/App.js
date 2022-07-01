@@ -6,6 +6,11 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import NoteBookForm from "./components/NotebookForm";
+import NotesForm from "./components/NotesForm";
+import SplashPage from "./components/SplashPage";
+import Footer from "./components/Footer";
+import NotebookList from "./components/NotebookList";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +29,16 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/notebookList">
+            <NotebookList />
+          </Route>
+          <Route exact path="/new/notebook">
+            <NoteBookForm />
+          <Footer />
+          </Route>
+          <Route exact path="/">
+            <SplashPage />
           </Route>
         </Switch>
       )}
