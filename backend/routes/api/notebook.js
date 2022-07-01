@@ -1,13 +1,19 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const Notebook = require('../../db/models');
+const {Notebook, Note} = require('../../db/models');
 
 const router = express.Router();
 
+router.get('/:notebookId', asyncHandler(async function(req, res) {
+  const notes = await Note.byFolder(req.params.notebookId)
+  return res.json(notes)
+}))
+
 router.get('/', 
 asyncHandler(async (req, res) => {
-  const notebooks = await Notebook.findAll();
+  console.log("in the api notebook.js");
+  const notebooks = await Notebook;
   res.json(notebooks);
 }));
 

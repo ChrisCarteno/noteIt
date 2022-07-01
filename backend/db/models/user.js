@@ -47,6 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }
   });
+
   User.prototype.toSafeObject = function() { // remember, this cannot be an arrow function
     const { id, username, email } = this; // context will be the User instance
     return { id, username, email };
@@ -81,9 +82,16 @@ module.exports = (sequelize, DataTypes) => {
     return await User.scope('currentUser').findByPk(user.id);
   };
   
-  User.associate = function(models) {
-    // associations can be defined here
-  };
   
+  User.associate = function(models) {
+    User.hasMany(models.Notebook, {
+      foreignKey: "userId",
+      onDelete: 'CASCADE',
+    });
+    User.hasMany(models.Note, {
+      foreignKey: "userId",
+      onDelete: 'CASCADE',
+    });
+  };
   return User;
 };
