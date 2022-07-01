@@ -23,6 +23,7 @@ router.post(
     console.log("in the post route");
     const newlyCreatedNotebook = await Notebook.create(req.body);
     console.log("after the create",newlyCreatedNotebook);
+    console.log("the notebook has been created");
     return newlyCreatedNotebook;
   })
 );
