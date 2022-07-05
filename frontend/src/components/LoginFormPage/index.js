@@ -35,6 +35,7 @@ function LoginFormPage() {
         Username or Email
         <input
           type="text"
+          class="email"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
           required
@@ -44,6 +45,7 @@ function LoginFormPage() {
         Password
         <input
           type="password"
+          class="email"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required

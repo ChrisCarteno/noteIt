@@ -3,13 +3,13 @@ import thunk from "redux-thunk";
 import sessionReducer from './session';
 
 import notebookReducer from "./notebook"
-import note from "./note"
+import noteReducer from "./note"
 
 const rootReducer = combineReducers({
   // add reducer functions here
   session: sessionReducer,
   notebook: notebookReducer,
-  note
+  note: noteReducer
 });
 
 let enhancer;

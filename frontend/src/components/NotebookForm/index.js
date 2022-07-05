@@ -1,30 +1,26 @@
 // frontend/src/components/NotebookForm/index.js
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
-import { createNotebook, getAllnoteBooks } from '../../store/notebook';
+import { createNotebook } from '../../store/notebook';
 import './NoteBookFormStyle.css'
 
 const NoteBookForm = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const [name, setName] = useState("");
-  const userId = 1;
-  const updateNotebook = (e) => setName(e.target.value);
-
-  // useEffect(() => {
-  //   dispatch(getAllnoteBooks ());
-  // }, [dispatch]);
+  const [title, setTitle] = useState("");
+  const user = useSelector(state => state.session.user);
+  const updateNotebook = (e) => setTitle(e.target.value);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     window.alert("handling form submission...");
+    const userId = user.id;
     const payload = {
       userId,
-      name
+      title
     };
-    
-    let createdNotebook = await dispatch(createNotebook(payload));
+    console.log(payload, "this is the payload handlesubmit")
+    let createdNotebook = dispatch(createNotebook(payload));
+    console.log(createdNotebook);
     
   };
 
@@ -35,8 +31,8 @@ const NoteBookForm = () => {
         <textarea
         type="text"
         placeholder="Add a noteBook name"
-        value={name}
-        onChange={updateNotebook}
+        value={title}
+        onChange={e => {updateNotebook(e)}}
           />
       </label>
       <button type="submit">Submit</button>

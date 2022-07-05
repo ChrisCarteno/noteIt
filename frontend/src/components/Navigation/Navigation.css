@@ -1,0 +1,27 @@
+.btn{
+    background:#2ecc71;
+    width:125px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    border-radius:3px;
+    border: #27ae60 1px solid;
+    
+    float:left;
+    margin-left:16px;
+    font-weight:800;
+    font-size:0.8em;
+  }
+.navigation{
+  float: left;
+
+
+}
+  .profile{
+    position: relative;
+    margin-left: 20px;
+    padding-left: 20px;
+    
+    float: left;
+    width: 60px;
+  }

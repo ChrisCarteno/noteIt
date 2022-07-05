@@ -1,7 +1,8 @@
-// frontend/src/components/RoomPage/index.js
-import React, { useState } from "react";
+// frontend/src/components/NoteForm/index.js
+import { useState } from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import * as sessionActions from "../../store/session";
+import { createNote } from '../../store/note';
+import { useParams } from 'react-router-dom';
 import './NotesFormStyle.css'
 
 function NotesForm() {
@@ -10,24 +11,26 @@ function NotesForm() {
   //   notebookId: 1,
   //   note: "this is a note"
   const dispatch = useDispatch();
-
+  const  notebookId  = 1;
   const [note, setNote] = useState("");
-  let userId =1;
-  let notebookId =1;
+  const user = useSelector(state => state.session.user);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     window.alert("handling form submission...");
-
-    setNote("");
-    dispatch()
-    .then(()=>dispatch());
-  };
-
+    const userId = user.id;
+    const payload = {
+      userId,
+      notebookId,
+      note,
+    };
+    let createdNote =  dispatch(createNote(payload));
+    console.log("this is youre note" , createdNote);
+  }
   return (
     <form onSubmit={handleSubmit}>
       <label>
-        Title
+        Note
         <textarea
         id="notes"
         type="text"

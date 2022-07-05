@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import SignupFormPage from "../SignupFormPage";
 import * as sessionActions from "../../store/session";
-import { useDispatch, useSelector } from "react-redux";
-import { useHistory, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import './splash.css'
+import logo from "./logo.png"
 
 const SplashPage = () => {
     const [signUp, setSignUp] = useState(false)
@@ -39,35 +41,36 @@ const SplashPage = () => {
                 }
             );
     }
-
-
     return (
-        <div id='main'>
-            <div>
-                <p >Log in</p>
-                <button onClick={() => setSignUp(true)}>Sign up</button>
-                {!signUp &&
-                    <>
-                    <form  onSubmit={(e) => handleSubmit(e)}>
-                        {errors.map((error, idx) => (
-                            <li class='error-li' key={idx}>{error}</li>
-                        ))}
-                        <input  onChange={(e) => setCredential(e.target.value)} value={credential}  placeholder="Email or Username" required></input>
-                        <input value={password}
-                            onChange={(e) => setPassword(e.target.value)}  placeholder="Password" type='password' required></input>
-                        <button  >Log In</button>
-                    </form>
-                    <button  onClick={(e)=> handleDefaultButton(e)}>Log In With Demo User</button>
-                    </>
-                }
-                {signUp &&
-                    <>
-                        <SignupFormPage />
-                        <button  onClick={() => setSignUp(false)}>Cancel Sign Up</button>
-                    </>
-                }
+        <div>        
+            <img src = {logo}  alt="logoImage" width="300px"/>
+            {!signUp &&
+                <div className="box">
+                <h2>Have an Account?</h2>
+                <form  onSubmit={(e) => handleSubmit(e)}>
+                    {errors.map((error, idx) => (
+                        <li class='error-li' key={idx}>{error}</li>
+                    ))}
+                <input  className="email" onChange={(e) => setCredential(e.target.value)} value={credential}  placeholder="Email or Username" required></input>
+                <input value={password} className="email"
+                    onChange={(e) => setPassword(e.target.value)}  placeholder="Password" type='password' required></input>
+                    <br></br>
+                <button  className="btn3">Log In</button>
+                </form>
+                <br></br>
+                <p> Sign up or try our Demo</p>
+                <button className="btn"  onClick={(e)=> handleDefaultButton(e)}>DemoLogin</button>
+                <button id="btn2" onClick={() => setSignUp(true)}>Sign up</button>
+                </div>
+            }
+            
+            {signUp &&
+            <div className="box2">
+                <SignupFormPage />
+                <button className="btn5" onClick={() => setSignUp(false)}>Cancel Sign Up</button>
+             </div>
+            }
 
-            </div>
         </div>
     )
 }
