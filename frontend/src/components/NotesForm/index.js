@@ -15,7 +15,6 @@ function NotesForm() {
   const user = useSelector(state => state.session.user);
   const notebookId = id;
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     window.alert("handling form submission...");
@@ -25,7 +24,7 @@ function NotesForm() {
       notebookId,
       note,
     };
-    if (note.length < 250) {
+    if (note.length > 4) {
       setErrors([]);
       return dispatch(createNote(payload))
       .catch(async (res) => {
@@ -33,7 +32,7 @@ function NotesForm() {
         if (data && data.errors) setErrors(data.errors);
       });
     }
-    return setErrors(['Note must be less than 250 characters']);
+    return setErrors(['Note must be at least 4 characters',`current length ${note.length}`]);
   }
   return (
     <form  onSubmit={handleSubmit}>

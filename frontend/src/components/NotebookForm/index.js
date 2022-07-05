@@ -20,7 +20,7 @@ const NoteBookForm = () => {
       userId,
       title
     };
-    if (title.length < 13) {
+    if (title.length > 4) {
       setErrors([]);
       return dispatch(createNotebook(payload))
       .catch(async (res) => {
@@ -28,7 +28,7 @@ const NoteBookForm = () => {
         if (data && data.errors) setErrors(data.errors);
       });
     }
-    return setErrors(['Note must be less than 13 characters',`current length ${title.length}`]);
+    return setErrors(['Notebook must be at least 4 characters',`current length ${title.length}`]);
     
   };
 
