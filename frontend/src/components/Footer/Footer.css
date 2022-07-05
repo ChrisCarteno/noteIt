@@ -1,21 +1,17 @@
-.footer{
-    background-color: rgba(0, 0, 0);
-    position: fixed;
-    left:0px;
-    bottom:0px;
-    height: 8.5vh;
+footer {
     width: 100%;
-    padding: 0px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 2;
-    box-shadow: 0 0 10px 0 black;
-    color: white;
-  
+    position: absolute;
+    bottom: 0;
+    margin-bottom: 30px;
   }
 
-  .footer-left{
-    display: flex;
-    flex-direction: column;
-  }
+.linked {
+  font-size: 1.4em;
+  width: 50%;
+  color:black
+}
+
+.linkedInPic{
+  width: 50px;
+  margin: 5px;
+}

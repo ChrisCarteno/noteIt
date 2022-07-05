@@ -25,3 +25,20 @@
     float: left;
     width: 60px;
   }
+
+  .fa-user-circle{
+    color: darkgoldenrod;
+  }
+  .profileText{
+    color: darkgoldenrod;
+    font-size: 17px;
+    margin: 0;
+    
+  }
+  .profileText2{
+    color: black;
+    font-size: 17px;
+    margin: 0;
+    font-style: oblique;
+    text-decoration: underline;
+  }

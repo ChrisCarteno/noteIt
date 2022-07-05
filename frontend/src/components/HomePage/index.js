@@ -5,9 +5,6 @@ import { Route, Switch } from "react-router-dom";
 
 import { getAllnotes } from "../../store/note"
 import Navigation from "../Navigation";
-import Footer from "../Footer";
-import SplashPage from "../SplashPage";
-import SignupFormPage from "../SignupFormPage";
 
 import logo from "./logo.png"
 import "./HomePage.css"
@@ -36,9 +33,6 @@ const HomePage = () => {
       return (
         <>
 
-          
-        
-          <Footer/>
         </>
       );
 }
