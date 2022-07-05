@@ -10,8 +10,8 @@ function Footer(){
     //       </a>
     // </footer>
    
-    <footer>
-  {/* <div className="copyright">
+    <footer className='footer'>
+  <div className="copyright">
     <p>NoteIt By Christian Carteno</p>
   </div>
   <div className="social">
@@ -21,7 +21,7 @@ function Footer(){
     <a href="https://github.com/ChrisCarteno" target="blank">
       <img alt="githubLogo" className = "linkedInPic" src="https://cdn4.iconfinder.com/data/icons/iconsimple-logotypes/512/github-512.png"/>
     </a>
-  </div> */}
+  </div>
 </footer>
 
   )

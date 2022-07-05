@@ -42,8 +42,10 @@ const SplashPage = () => {
             );
     }
     return (
-        <div>        
-            <img src = {logo}  alt="logoImage" width="300px"/>
+        <div> 
+            <div className="image" >
+            <img  src = {logo}  alt="logoImage" width="300px"/>
+                </div>       
             {!signUp &&
                 <div className="box">
                 <h2>Have an Account?</h2>

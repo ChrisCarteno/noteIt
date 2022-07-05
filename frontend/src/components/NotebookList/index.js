@@ -6,9 +6,11 @@ import { getAllnotes } from "../../store/note";
 import NotesForm from "../NotesForm";
 import './NoteBookList.css';
 
+
 const NotebookList = () =>{
     const dispatch = useDispatch();
     const history = useHistory();
+
     const { id } = useParams();
     const user = useSelector((state) => state.session.user);
     const userNotes = useSelector((state) => Object.values(state.note));
@@ -18,7 +20,7 @@ const NotebookList = () =>{
     useEffect(() => {
         dispatch(getAllnotes(user.id))
         .then(dispatch(getAllnoteBooks(user.id)))
-    }, [dispatch, notebookList]);
+    }, [dispatch]);
     
     const deleteUserNotebook = (e) => {
         e.preventDefault();
@@ -62,8 +64,8 @@ const NotebookList = () =>{
             )
             }
         }): <h1>No Notes Currently</h1> }
-    </div>
-    <NotesForm/>
+         </div>
+            <NotesForm/>
         </>
     )
 }
