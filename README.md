@@ -9,13 +9,12 @@ built using Javascript, html,css, react, and redux.
 LiveSite link: https://nooteit.herokuapp.com/
 
 ## Downloading the App
-Clone this repository: https://github.com/ChrisCarteno/noteIt.git
-
-Install all packages in both the frontend and backend directories using 'npm install'.
-Create a .env
-Create User and database
-Migrate and seed the database
-Run npm start in the frontend and backend
+* Clone this repository: https://github.com/ChrisCarteno/noteIt.git
+* Install all packages in both the frontend and backend directories using 'npm install'.
+* Create a .env
+* Create User and database
+* Migrate and seed the database
+* Run npm start in the frontend and backend
 
 ### Features
 * Sign up
