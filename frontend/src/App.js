@@ -40,7 +40,7 @@ function App() {
       <Route exact path ='/notebooks/:id'>
         <NotebookList/>
       </Route>
-      <Route path="/notebooks/new">
+      <Route exact path="/notebooks/new">
         <NoteBookForm />
       </Route>
       <Route exact path='/note/:id'>

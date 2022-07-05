@@ -39,9 +39,12 @@ router.post('/new', asyncHandler(async (req, res) => {
 router.put( '/:id/edit', asyncHandler(async (req, res) => {
   console.log("inthe put note");
   const { note} = req.body;
+  console.log(note);
   const newNote = await Note.findByPk(req.params.id);
   newNote.note = note;
-  await newNote.save;
+  console.log(newNote.note);
+  await newNote.save();
+  console.log(newNote);
   return res.json(newNote);
 })
 );

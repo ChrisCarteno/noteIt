@@ -39,8 +39,9 @@ export const getAllnoteBooks = (userId) => async dispatch =>{
   if(res.ok){
     console.log("inside of the getAllNotebooks function res.ok")
     const notebooks = await res.json();
-    console.log(notebooks)
+    console.log(notebooks);
     dispatch(loadAll(notebooks));
+    console.log(notebooks);
     return notebooks;
   }
 }
@@ -77,6 +78,8 @@ export const deleteNotebook = notebookId => async dispatch =>{
   if(res.ok){
     const notebookId = await res.json();
     dispatch(remove(notebookId));
+    console.log(notebookId);
+    return notebookId;
   }
 }
 
@@ -130,6 +133,7 @@ const notebookReducer = (state = initialState, action) =>{
     case REMOVE:{
       let newState = {...state}
       delete newState[action.notebook];
+      console.log(newState);
       return newState;
     }
     default:

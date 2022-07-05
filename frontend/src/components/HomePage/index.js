@@ -21,33 +21,28 @@ const HomePage = () => {
     const [notebookId, setNotebookId] = useState();
     const updateNotebookId = (e) => setNotebookId(e.target.value);
 
-
+    
     useEffect(() => {
         dispatch(sessionActions.restoreUser())
         .then(()=> setUser(true))
         if(user){
-        dispatch(getAllnotes(userId.id))
-        .then(dispatch(getAllnoteBooks(userId.id)))
-        .then(setIsLoaded(true));
+        const allTheNotes = dispatch(getAllnotes(userId.id));
+        console.log(allTheNotes);
+        const allTheNotebooks = dispatch(getAllnoteBooks(userId.id));
+        console.log(allTheNotebooks)
+        setIsLoaded(true)
+
         }
       }, [dispatch, isLoaded, user]);
 
-
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        window.alert("handling form submission...");
-        console.log(userId);
-        console.log(notebookId);
-        // let deletedNotebook = dispatch(deleteNotebook(e));
-      };
 
       return (
         <div>
           <br></br>
                 <div className=''>
                   <h3> These are all Of your Notebooks</h3>
-                    { userNotebooks.map((notebook) => {
-                      console.log("this is a notebook", notebook, notebook.id);
+                    { 
+                    userNotebooks.map((notebook) => {
                         return (
                             <>
                             <div className="notebook">
