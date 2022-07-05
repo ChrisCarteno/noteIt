@@ -14,9 +14,7 @@ const NotebookList = () =>{
     const { id } = useParams();
     const user = useSelector((state) => state.session.user);
     const userNotes = useSelector((state) => Object.values(state.note));
-    const [isLoad, setIsLoad] = useState(false);
-    const notebookList = useSelector((state) => Object.values(state.notebook));
-
+    
     useEffect(() => {
         dispatch(getAllnotes(user.id))
         .then(dispatch(getAllnoteBooks(user.id)))
@@ -24,15 +22,12 @@ const NotebookList = () =>{
     
     const deleteUserNotebook = (e) => {
         e.preventDefault();
+        e.stopPropagation();
         dispatch(deleteNotebook(id))
-        .then(setIsLoad(true))
         .then(() => history.push('/'))
     }
-    console.log(userNotes)
-    if(isLoad){
-        console.log(isLoad);
-        history.push('/')
-    }
+    const notebookList = useSelector((state) => Object.values(state.notebook));
+    console.log(userNotes);
     let sum = 0;
     let theNum;
     notebookList.map((notebook) => {

@@ -21,7 +21,7 @@ const Note = () =>{
     useEffect(() => {
         dispatch(getAllnotes(user.id))
         .then(dispatch(getAllnoteBooks(user.id)))
-    }, [dispatch, isLoad, userNotes]);
+    }, [dispatch]);
     
     console.log(id.id);
     const deleteUserNote = (e) => {
