@@ -20,7 +20,7 @@ const NoteBookForm = () => {
       userId,
       title
     };
-    if (title.length < 123) {
+    if (title.length < 13) {
       setErrors([]);
       return dispatch(createNotebook(payload))
       .catch(async (res) => {
