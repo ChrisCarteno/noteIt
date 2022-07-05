@@ -10,8 +10,8 @@ const NotebookList = () =>{
     const dispatch = useDispatch();
     const history = useHistory();
     const { id } = useParams();
-    const user = useSelector((state) => state.session.user)
-    const userNotes = useSelector((state) => Object.values(state.note))
+    const user = useSelector((state) => state.session.user);
+    const userNotes = useSelector((state) => Object.values(state.note));
     useEffect(() => {
         dispatch(getAllnotes(user.id))
         .then(dispatch(getAllnoteBooks(user.id)))

@@ -10,7 +10,7 @@ import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
 import NoteBookForm from "./components/NotebookForm";
 import NotebookList from "./components/NotebookList";
-
+import Note from "./components/NotesList";
 import HomePage from "./components/HomePage";
 
 function App() {
@@ -42,6 +42,9 @@ function App() {
       </Route>
       <Route path="/notebooks/new">
         <NoteBookForm />
+      </Route>
+      <Route exact path='/note/:id'>
+        <Note />
       </Route>
       <Route path="/" exact>
         {userId &&

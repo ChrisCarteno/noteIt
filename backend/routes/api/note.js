@@ -36,7 +36,8 @@ router.post('/new', asyncHandler(async (req, res) => {
 })
 );
 
-router.put( '/:id', asyncHandler(async (req, res) => {
+router.put( '/:id/edit', asyncHandler(async (req, res) => {
+  console.log("inthe put note");
   const { note} = req.body;
   const newNote = await Note.findByPk(req.params.id);
   newNote.note = note;
@@ -46,6 +47,7 @@ router.put( '/:id', asyncHandler(async (req, res) => {
 );
 
 router.delete('/:id', asyncHandler(async(req, res) => {
+  console.log("inthe delete note");
   const id = req.params.id;
   const note = await Note.findByPk(id)
   await note.destroy();

@@ -1,5 +1,6 @@
 // frontend/src/store/note.js
 import { csrfFetch } from './csrf';
+import { useHistory } from 'react-router-dom';
 
 const LOAD = 'notes/LOAD';
 // const LOADONE = 'note/LOAD';
@@ -78,8 +79,9 @@ export const createNote = payload => async dispatch =>{
 export const editNote = payload => async dispatch =>{
   const body = JSON.stringify(payload);
   const noteId = payload.id;
-  console.log(noteId);
-  const res = await csrfFetch(`/api/note/${noteId}/edit`, {
+  console.log(body, noteId);
+  
+  const res = await csrfFetch(`/api/notes/${noteId}/edit`, {
     method: "PUT",
     headers: { 'Content-Type': 'application/json'},
     body,
@@ -90,11 +92,10 @@ export const editNote = payload => async dispatch =>{
     dispatch(edit(note));
     return note;
   }
-
 }
 
 export const deleteNote = noteId => async dispatch =>{
-
+  console.log("dispatching deletNote from Store", noteId);
   const res = await csrfFetch(`/api/notes/${noteId}`, {
     method: "DELETE",
   });
