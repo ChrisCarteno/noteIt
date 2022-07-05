@@ -22,11 +22,14 @@ const NotebookList = () =>{
     }, [dispatch]);
     
     const deleteUserNotebook = (e) => {
+        console.log("insided of delteUserNOtebook");
         e.preventDefault();
         e.stopPropagation();
         deletedNoteBook = dispatch(deleteNotebook(id))
         .then(setIsLoad(true))
-        .then(() => history.push('/'))
+        .then(() => history.push({
+            pathname: '/'
+          }))
     }
     const notebookList = useSelector((state) => Object.values(state.notebook));
 

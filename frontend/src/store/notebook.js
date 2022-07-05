@@ -104,7 +104,7 @@ const initialState = { };
 const notebookReducer = (state = initialState, action) =>{
   switch(action.type){
     case LOADALL:{
-      let allnotes = {...state};
+      let allnotes = {};
       action.notebooks.forEach(notebook => {
         allnotes[notebook.id] = notebook;
       });

@@ -49,6 +49,7 @@ router.post( '/new', asyncHandler(async function (req, res) {
 router.delete('/:notebookId', asyncHandler(async (req, res) => {
     const notebookId = req.params.notebookId;
     const notebook = await Notebook.findByPk(notebookId);
+    console.log("intheDeleteNOtebook",notebook);
     await notebook.destroy();
     return res.json(notebook);
   })

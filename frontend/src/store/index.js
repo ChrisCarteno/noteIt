@@ -10,6 +10,7 @@ const rootReducer = combineReducers({
   session: sessionReducer,
   notebook: notebookReducer,
   note: noteReducer
+
 });
 
 let enhancer;
