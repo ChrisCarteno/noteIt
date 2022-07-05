@@ -38,11 +38,8 @@ router.post(
   
       await Notebook.create({
         userId: user.id,
-        title: "My First Notebook",
-        createdAt: new Date(),
-        updatedAt: new Date()
+        title: `${username}'s Notebook`
       })
-
       await setTokenCookie(res, user);
   
       return res.json({

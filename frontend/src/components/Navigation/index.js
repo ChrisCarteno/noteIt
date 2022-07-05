@@ -2,6 +2,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
+import { NavLink } from 'react-router-dom';
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -23,6 +24,13 @@ function Navigation({ isLoaded }){
 
   return (
     <div className="navigation">
+        <NavLink 
+        style={({ isActive }) => ({
+          color: isActive ? '#fff' : '#545e6f',
+          background: isActive ? '#7600dc' : '#f0f0f0',
+        })}
+        className="navLink" exact to="/">Home</NavLink>
+        
         {isLoaded && sessionLinks}
     </div>
   );

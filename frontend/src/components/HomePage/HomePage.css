@@ -1,0 +1,51 @@
+.notebook{
+    display: flex;
+    margin: 40px;
+    width: 240px;
+    height: 196px;
+    background: url("https://e7.pngegg.com/pngimages/572/737/png-clipart-red-spring-notebook-oxford-standard-paper-size-amazon-com-notebook-red-notebook-text-rectangle.png") ;
+    background-repeat: no-repeat;
+    background-size: contain;
+    /* background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTddY8mxaGvWcVwZ08o7--hs0NbllYHUrUIXQ&usqp=CAU") ; */
+}
+.innerNotebook{
+    margin-left: 25px;
+    margin-right: 5px;
+    margin-top: 50px;
+    font-size: medium;;
+    font-weight: bold;
+    color: whitesmoke;
+}
+h3{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background: #5B9600;
+    border-radius: 6px 6px 6px 6px;
+    box-shadow: 0 0 0 1px #5F5A4B, 1px 1px 6px 1px rgba(10, 10, 0, 0.5);
+    color: #FFFFFF;
+    font-size: 20px;
+    font-weight: bold;
+    height: 24px;
+    line-height: 20px;
+    margin: 12px 0 !important;
+    padding: 5px 0 5px 10px;
+    text-shadow: 2px 2px 3px #222222; 
+}
+
+.btnDelete{
+    background:#2ecc71;
+    width:125px;
+    padding-top:5px;
+    padding-bottom:5px;
+    color:white;
+    border-radius:3px;
+    border: #27ae60 1px solid;
+    margin-top: 50px;
+    margin-left:50px;
+    font-weight:800;
+    font-size:0.8em;
+  }
+
+  .btnDelete:hover{
+    background:#2CC06B; 
+  }
+  

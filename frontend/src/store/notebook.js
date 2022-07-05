@@ -46,12 +46,9 @@ export const getAllnoteBooks = (userId) => async dispatch =>{
 }
 
 export const getNotebookNotes = (notebookId) => async dispatch =>{
-  console.log("inside of the getNotebookNotes function")
-
   const res = await fetch(`/api/notebooks/${notebookId}/notes`);
 
   if(res.ok){
-    console.log("inside of the getNotebookNotes function res.ok")
     const notes = await res.json();
     console.log(notes)
     dispatch(loadNOTES(notes));
@@ -59,7 +56,6 @@ export const getNotebookNotes = (notebookId) => async dispatch =>{
   }
 }
 export const getNotebook = (notebookId) => async dispatch =>{
-  console.log("inside of the getNotebook function")
 
   const res = await fetch(`/api/notebooks/${notebookId}`);
 
@@ -73,7 +69,8 @@ export const getNotebook = (notebookId) => async dispatch =>{
 }
 
 export const deleteNotebook = notebookId => async dispatch =>{
-  const res = await fetch(`/api/notebooks/${notebookId}`, {
+  console.log("deleting", notebookId)
+  const res = await csrfFetch(`/api/notebooks/${notebookId}`, {
     method: "DELETE",
   });
   

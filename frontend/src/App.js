@@ -8,8 +8,8 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SplashPage from "./components/SplashPage";
 import Footer from "./components/Footer";
-
-
+import NoteBookForm from "./components/NotebookForm";
+import NotebookList from "./components/NotebookList";
 
 import HomePage from "./components/HomePage";
 
@@ -37,7 +37,13 @@ function App() {
       <Route path="/signup">
         <SignupFormPage />
       </Route>
-      <Route path={["/", "/notebooks"]} exact>
+      <Route exact path ='/notebooks/:id'>
+        <NotebookList/>
+      </Route>
+      <Route path="/notebooks/new">
+        <NoteBookForm />
+      </Route>
+      <Route path="/" exact>
         {userId &&
         <>
         <HomePage isLoaded={isLoaded}/>

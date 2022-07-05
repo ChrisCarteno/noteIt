@@ -1,4 +1,4 @@
-.btn{
+.btnLogout{
     background:#2ecc71;
     width:125px;
     padding-top:5px;
@@ -7,21 +7,16 @@
     border-radius:3px;
     border: #27ae60 1px solid;
     
-    float:left;
     margin-left:16px;
     font-weight:800;
     font-size:0.8em;
   }
-.navigation{
-  float: left;
 
-
-}
   .profile{
     position: relative;
     margin-left: 20px;
     padding-left: 20px;
-    
+    margin: 40px;
     float: left;
     width: 60px;
   }
@@ -41,4 +36,16 @@
     margin: 0;
     font-style: oblique;
     text-decoration: underline;
+  }
+
+  .navLink{
+    width:125px;
+    padding-top:6px;
+    padding-bottom:5px;
+    border-radius:20px;
+    margin:10px;
+    margin-left:16px;
+    font-weight:800;
+    font-size:0.8em;
+    float: left;
   }

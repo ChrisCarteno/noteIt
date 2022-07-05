@@ -1,49 +1,63 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useParams, NavLink } from "react-router-dom";
-import { getAllnoteBooks, deleteNotebook, getNotebookNotes } from "../../store/notebook";
+import { deleteNotebook, getAllnoteBooks } from "../../store/notebook";
+import { getAllnotes } from "../../store/note";
+import NotesForm from "../NotesForm";
+import './NoteBookList.css';
 
 const NotebookList = () =>{
     const dispatch = useDispatch();
+    const history = useHistory();
     const { id } = useParams();
     const user = useSelector((state) => state.session.user)
-    const userNotes = useSelector((state) => state.notebook.notes)
-    const notebookList = useSelector((state) => Object.values(state.notebook));
-    console.log(notebookList);
-
-    useEffect(() =>{
-        dispatch(getAllnoteBooks());
+    const userNotes = useSelector((state) => Object.values(state.note))
+    useEffect(() => {
+        dispatch(getAllnotes(user.id))
+        .then(dispatch(getAllnoteBooks(user.id)))
     }, [dispatch]);
-    console.log(notebookList);
-
-    const deleteNotebook = (e) => {
+    
+    const deleteUserNotebook = (e) => {
         e.preventDefault();
         e.stopPropagation();
         dispatch(deleteNotebook(id))
+        .then(() => history.push('/'))
     }
+    console.log(userNotes)
+    const notebookList = useSelector((state) => Object.values(state.notebook));
+    let sum = 0;
+    let theNum;
+    notebookList.map((notebook) => {
+        if(notebook.id == id){
+            theNum = sum
+        }else{
+            sum++;
+        }
+    });
     
     return(
         <>
-            <h1> Notebook List</h1>
-            {notebookList?.map(({id, name})=>(
-                <p key={id}>{name}</p>
-            ))}
-
-<div className='user-notes'>
-        {userNotes?.length > 0 ? userNotes?.map((note) => {
+            <h3> Notes for {notebookList[theNum].title}</h3>
+            <button className="btnDel" onClick={(e) => deleteUserNotebook(e)}>
+                Delete Notebook
+            </button>
+            <div className='user-notes'>
+            {userNotes.length > 0 ? userNotes.map((note) => {
+            if(note.notebookId == id){
+                console.log(id, note);
             return (
-                <NavLink key={`${note?.id}`} to={`/note/${note?.id}`}>
-                    <div>
-                        {note?.title}
-                    </div>
-                    <div>
-                        {note?.content}
-                    </div>
-                </NavLink>
+                <div className="noteDiv">
+                    <NavLink key={note.id} to={`/note/${note.id}`}>
+                        <div className="innerNote">
+                            {note.note}
+                        </div>
+                    </NavLink>
+                </div>
             )
-
+            }
         }): <h1>No Notes Currently</h1> }
     </div>
+    <NotesForm/>
         </>
     )
 }

@@ -7,13 +7,14 @@ import './NotesFormStyle.css'
 
 function NotesForm() {
 
-  // userId: 2,
-  //   notebookId: 1,
-  //   note: "this is a note"
   const dispatch = useDispatch();
-  const  notebookId  = 1;
+  const { id } = useParams();
   const [note, setNote] = useState("");
+  const [errors, setErrors] = useState([]);
+
   const user = useSelector(state => state.session.user);
+  const notebookId = id;
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -24,14 +25,25 @@ function NotesForm() {
       notebookId,
       note,
     };
-    let createdNote =  dispatch(createNote(payload));
-    console.log("this is youre note" , createdNote);
+    if (note.length < 250) {
+      setErrors([]);
+      return dispatch(createNote(payload))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+    }
+    return setErrors(['Note must be less than 250 characters']);
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Note
+    <form  onSubmit={handleSubmit}>
+      <div className="box4">
+      <ul>
+        {errors.map((error, idx) => <li key={idx}>{error}</li>)}
+      </ul>
+      <h2> Creat a New Note</h2>
         <textarea
+        required
         id="notes"
         type="text"
         placeholder="Add a some notes"
@@ -39,8 +51,10 @@ function NotesForm() {
         onChange={e => {
           setNote(e.target.value)}}
           />
-      </label>
-      <button type="submit">Submit</button>
+          <br></br>
+      <button type="submit" className='btnLogout'>Submit</button>
+
+      </div>
     </form>
   );
 }
