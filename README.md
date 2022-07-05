@@ -1,4 +1,15 @@
-This is the readme for the noteit app
-It is a clone of the webiste Evernote
-You can make and manage notes with this clone
-You can also organize them with notebooks
+# NoteIt
+
+Note is a web app for writing and creating notes. NoteIt is an Evernote clone
+built using Javascript, html,css, react, and redux.
+
+LiveSite link: https://nooteit.herokuapp.com/
+
+### Features
+* Sign up
+* Sign in
+* Create folders to structure notes
+* Create Notes
+* Delete Folders
+* Delete NOtes
+* Edit Notes
