@@ -15,6 +15,9 @@ const Note = () =>{
     const user = useSelector((state) => state.session.user);
     const id = useParams();
     const userNotes = useSelector((state) => Object.values(state.note));
+    const [isLoad, setIsLoad] = useState(false);
+
+    console.log(isLoad);
     useEffect(() => {
         dispatch(getAllnotes(user.id))
         .then(dispatch(getAllnoteBooks(user.id)))
@@ -26,8 +29,15 @@ const Note = () =>{
         e.stopPropagation();
         console.log("dispatching deleteNote", id.id);
         dispatch(deleteNote(id.id))
+        .then(setIsLoad(true))
         .then(() => history.push('/'))
     }
+
+    if(isLoad){
+        console.log(isLoad);
+        history.push('/')
+    }
+
     const notebookList = useSelector((state) => Object.values(state.notebook));
     let sum = 0;
     let theNum;
